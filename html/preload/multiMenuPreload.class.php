@@ -61,7 +61,7 @@ class multimenuFlow {
 				}
 				if ($b['id'] == $id){
 					$this->flowLink = $nextLink = $b['link'];	// selected flow link
-					$link_option = $b['link_option'];
+					$link_option = isset($b['link_option'])? $b['link_option'] : '';
 					//echo $link_option;var_dump($b);die;
 					$mid = $b['mid'];				// module id
 				}
