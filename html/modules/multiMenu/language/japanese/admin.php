@@ -8,6 +8,7 @@ define('_AD_MULTIMENU_ADMIN_05', 	'設定:メニュー05');
 define('_AD_MULTIMENU_ADMIN_06', 	'設定:メニュー06');
 define('_AD_MULTIMENU_ADMIN_07', 	'設定:メニュー07');
 define('_AD_MULTIMENU_ADMIN_08', 	'設定:メニュー08');
+define('_AD_MULTIMENU_ADMIN_99', 	'設定:フロー');
 define('_AD_MULTIMENU_EDITIMENU', 	'編集');
 define('_AD_MULTIMENU_NEWIMENU', 	'新しいリンク');
 define('_AD_MULTIMENU_NEW',		'リンク追加');
