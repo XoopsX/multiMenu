@@ -95,12 +95,12 @@ class multimenu{
     $class = 'even';
     foreach ( $objcts as $obj ) {
       if ($obj->get('weight') != 0) {
-        $moveup = "<a href='index.php?mnum=".$this->mnum."&op=move&id=".$obj->get('id')."&weight=".($obj->get('weight')-1).$gticket_param."'>["._AD_MULTIMENU_UP."]</a>";
+        $moveup = "<a href='index.php?mnum=".$this->mnum."&op=move&id=".$obj->get('id')."&weight=".($obj->get('weight')-1)."'>["._AD_MULTIMENU_UP."]</a>";
       } else {
         $moveup = "["._AD_MULTIMENU_UP."]";
       }
       if ($obj->get('weight') != (count($objcts)  - 1)) {
-        $movedown = "<a href='index.php?mnum=".$this->mnum."&op=move&id=".$obj->get('id')."&weight=".($obj->get('weight')+2).$gticket_param."'>["._AD_MULTIMENU_DOWN."]</a>";
+        $movedown = "<a href='index.php?mnum=".$this->mnum."&op=move&id=".$obj->get('id')."&weight=".($obj->get('weight')+2)."'>["._AD_MULTIMENU_DOWN."]</a>";
       } else {
         $movedown = "["._AD_MULTIMENU_DOWN."]";
       }
