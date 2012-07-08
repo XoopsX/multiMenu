@@ -1,4 +1,5 @@
-      <!-- start module menu loop -->
+      <!-- START MODULE MENU LOOP -->
+      <ul>
       <{foreach name=menuloop item=imenu from=$block.contents}>
         <{if $imenu.link != ""}>
 		<li>
@@ -15,4 +16,5 @@
 		</li>
         <{/if}>
       <{/foreach}>
+      </ul>
       <!-- end module menu loop -->
