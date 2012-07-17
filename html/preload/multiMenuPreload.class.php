@@ -18,22 +18,22 @@ class multiMenuPreload extends XCube_ActionFilter{
 	}
 	function menuSmartyAssign(&$xoopsTpl) {
         $module_handler = & xoops_gethandler( 'module' );
-		$module =& $module_handler->getByDirname("multiMenu");
+		$module =& $module_handler->getByDirname('multiMenu');
 		if ( !is_object( $module ) || !$module->getVar( 'isactive' ) ) {
 			return ;
 		}
 		$gmm = new getMultiMenu();
-		$options=array("40");
+		$options=array('40');
 		$menu_num = $gmm->theme_menu();
 		if ( !empty($menu_num) ) {
-			$block = $gmm->getblock( $options, "multimenu0" . $menu_num );
+			$block = $gmm->getblock( $options, 'multimenu0' . $menu_num );
 			$xoopsTpl->assign( 'multiMenuToTheme' , $block ) ;	// Insert smarty for entire site theme
 		}
 		$flow = new multiMenuFlow($gmm);
 	    if ($flow->nextLink){
 		    //            die($flow->nextLink);
             $_SESSION['multiMenuFlow'] = array();
-            redirect_header($flow->nextLink,3,"Multimeu Flow next link. ");
+            redirect_header($flow->nextLink,3,'Multimeu Flow next link. ');
 //            $this->mController->executeForward($flow->nextLink);
 		}
 	}
@@ -110,17 +110,17 @@ class multimenuFlow  {
 		global $xoopsUser,$xoopsDB;
 		// Record to log
         if (is_null($id)) return;
-		$sql = "INSERT INTO " .$xoopsDB->prefix("multimenu_log")
-		." (uid,id) VALUES(".$xoopsUser->uid().",".$id . ")";
+		$sql = 'INSERT INTO ' .$xoopsDB->prefix('multimenu_log')
+		.' (uid,id) VALUES('.$xoopsUser->uid().','.$id . ')';
 		$ret = $xoopsDB->queryF($sql);
 		if(!$ret){
-			$sql = "UPDATE " .$xoopsDB->prefix("multimenu_log")
-			." SET id=" . $id . " WHERE uid=".$xoopsUser->uid().";";
+			$sql = 'UPDATE ' .$xoopsDB->prefix('multimenu_log')
+			.' SET id=' . $id . ' WHERE uid='.$xoopsUser->uid().';';
 			$ret = $xoopsDB->queryF($sql);
 		}
 	}
-	private function linkComp($refererUrl,$flowLink,$option=""){
-		//echo "<hr>requestUrl: ".$refererUrl . "<br />". "flowLink: ". $flowLink ."<br />";
+	private function linkComp($refererUrl,$flowLink,$option=''){
+		//echo '<hr>requestUrl: '.$refererUrl . '<br />'. 'flowLink: '. $flowLink .'<br />';
 		if (! $refererUrl) {
 			return false;
 		}
@@ -131,32 +131,32 @@ class multimenuFlow  {
 			return false;
 		}
 		$parse = array('query'=>true);
-		if ( substr($req['path'], -1)=="/") $req['path'] .= "index.php";
+		if ( substr($req['path'], -1)=='/') $req['path'] .= 'index.php';
 		foreach($flo as $key => $val){
-			if ($key=="path" && substr($val, -1)=="/"){
-                $val .= "index.php";
+			if ($key=='path' && substr($val, -1)=='/'){
+                $val .= 'index.php';
             }
             if (!isset($req[$key])){
-				if ($key!="query"){
+				if ($key!='query'){
                     $parse[$key] = false;
                 }
 				break;
 			}
-            //echo "<br />" . $key . ":" . $val . "<->" . $req[$key];
+            //echo '<br />' . $key . ':' . $val . '<->' . $req[$key];
 			if (strcmp($val,$req[$key])==0){
 				$parse[$key] = true;
 			}else{
 				$parse[$key] = false;
 			}
-			if ($key=="query"){
-				$f_prm = explode("&",$val);
-				$r_prm = explode("&",$req[$key]);
-				$r_prm = array_merge($r_prm, explode("&",$option));
-				//echo "<br />req: "; var_dump($r_prm);
+			if ($key=='query'){
+				$f_prm = explode('&',$val);
+				$r_prm = explode('&',$req[$key]);
+				$r_prm = array_merge($r_prm, explode('&',$option));
+				//echo '<br />req: '; var_dump($r_prm);
 				$parse[$key] = false;
 				foreach($f_prm as $k=>$v){
 					if(in_array($v,$r_prm)){
-						//echo "<br />v: ".$v;
+						//echo '<br />v: '.$v;
 						$parse[$key] = true;
 					}
 				}
@@ -169,7 +169,7 @@ class multimenuFlow  {
 		if ($parse && in_array(false,$parse)){
 			$ret = false;
 		}
-		//if ($ret==true) echo "Move Ok.<br />";else echo "Move NO.<br />";
+		//if ($ret==true) echo 'Move Ok.<br />';else echo 'Move NO.<br />';
 		return $ret;
 	}
 }
