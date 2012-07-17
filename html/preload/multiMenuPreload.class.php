@@ -51,9 +51,9 @@ class multimenuFlow  {
 		if ($xoopsUser){
             $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')? 'https': 'http';
             $requestUrl = $protocol.'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-            $refererUrl = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : NULL;
-            if( isset($_SESSION['multiMenuFlow']['nextId'] )){
-                if( $refererUrl!=$_SESSION['multiMenuFlow']['requestUrl'] ){
+            $refererUrl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : NULL;
+            if( isset($_SESSION['multiMenuFlow']) && isset($_SESSION['multiMenuFlow']['nextId'] )){
+                if( $refererUrl != $_SESSION['multiMenuFlow']['requestUrl'] ){
                     $nextId =  $_SESSION['multiMenuFlow']['nextId'];
                     $this->nextLink = $_SESSION['multiMenuFlow']['nextLink'];
                     $this->moveFlowPosition($nextId);
@@ -62,10 +62,9 @@ class multimenuFlow  {
             }
             $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')? 'https': 'http';
             $requestUrl = $protocol.'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-            $refererUrl = $_SERVER["HTTP_REFERER"];
-            $options = array("40");
-			$block = $gmm->getblock( $options, "multimenu99");
-			$sql = "SELECT id FROM " .$xoopsDB->prefix("multimenu_log") ." WHERE uid=" . $xoopsUser->uid() . ";";
+            $options = array('40');
+			$block = $gmm->getblock( $options, 'multimenu99');
+			$sql = 'SELECT id FROM ' .$xoopsDB->prefix('multimenu_log') . ' WHERE uid=' . $xoopsUser->uid() . ';';
 			$ret = $xoopsDB->query($sql);
             $id = NULL;
 			if ($ret) list($id) = $xoopsDB->fetchRow($ret);
@@ -84,7 +83,7 @@ class multimenuFlow  {
 			/*
 			 * Back to Flow Top When same as top link
 			 */
-			if( $this->linkComp($refererUrl,$block['contents'][0]['link'])==true ){
+			if( $this->linkComp($refererUrl,$block['contents'][0]['link']) == true ){
                 $topId = $block['contents'][0]['id'];
                 $this->moveFlowPosition($topId);
             }
@@ -122,8 +121,15 @@ class multimenuFlow  {
 	}
 	private function linkComp($refererUrl,$flowLink,$option=""){
 		//echo "<hr>requestUrl: ".$refererUrl . "<br />". "flowLink: ". $flowLink ."<br />";
-		$req = parse_url($refererUrl);
-		$flo = parse_url($flowLink);
+		if (! $refererUrl) {
+			return false;
+		}
+		if (! $req = parse_url($refererUrl)) {
+			return false;
+		}
+		if (! $flo = parse_url($flowLink)) {
+			return false;
+		}
 		$parse = array('query'=>true);
 		if ( substr($req['path'], -1)=="/") $req['path'] .= "index.php";
 		foreach($flo as $key => $val){
