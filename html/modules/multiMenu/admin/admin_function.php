@@ -195,7 +195,7 @@ class multimenu{
   	$obj->set('groups', $groups);
   }
 */
-  private function im_admin_update_menu(&$obj,$weight=NULL){
+  private function im_admin_update_menu(&$obj){
   	$title = isset($_POST['title']) ? $this->root->mContext->mRequest->getRequest('title') : 'NoTitle';
   	$link = isset($_POST['link']) ? $this->root->mContext->mRequest->getRequest('link') : 'http://www.google.co.jp/';
   	$hide = empty($_POST['hide']) ? 0 : 1;
@@ -206,7 +206,6 @@ class multimenu{
   	$obj->set('title', $title);
   	$obj->set('hide', $hide);
   	$obj->set('link', $link);
-	if ($weight) $obj->set('weight', $weight);
   	$obj->set('target', $target);
   	$obj->set('groups', $groups);
   }
@@ -219,11 +218,10 @@ class multimenu{
   	$id = isset($_POST['id']) ? intval($_POST['id']) : 0;
     if ( $id == 0 ) {
 		$obj = $modhand->create();
-	    $this->im_admin_update_menu($obj,255);
     } else {
     	$obj = $modhand->get($id);
-	    $this->im_admin_update_menu($obj);
     }
+    $this->im_admin_update_menu($obj);
     $success = $modhand->insert($obj);
     if ( !$success ) {
       redirect_header("index.php?mnum=".$this->mnum,2,_AD_MULTIMENU_UPDATED);
