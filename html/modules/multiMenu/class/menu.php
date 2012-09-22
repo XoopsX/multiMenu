@@ -5,12 +5,12 @@ class MultimenuMenuObject extends XoopsSimpleObject
 {
   public function __construct()
   {
-    $this->initVar('id', XOBJ_DTYPE_INT, '0', true);
-    $this->initVar('title', XOBJ_DTYPE_STRING, '');
-    $this->initVar('hide', XOBJ_DTYPE_INT, 0);
+    $this->initVar('id', XOBJ_DTYPE_INT, '0', true );
+    $this->initVar('title', XOBJ_DTYPE_STRING, '' );
+    $this->initVar('hide', XOBJ_DTYPE_INT, 0 );
     $this->initVar('link', XOBJ_DTYPE_STRING, '');
-    $this->initVar('weight', XOBJ_DTYPE_INT, 0);
-    $this->initVar('target', XOBJ_DTYPE_STRING, '_self');
+    $this->initVar('weight', XOBJ_DTYPE_INT, 255 );
+    $this->initVar('target', XOBJ_DTYPE_STRING, '_self' );
     $this->initVar('groups', XOBJ_DTYPE_STRING, '');
   }
 }
