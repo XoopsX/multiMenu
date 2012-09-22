@@ -206,7 +206,6 @@ class multimenu{
   	$obj->set('title', $title);
   	$obj->set('hide', $hide);
   	$obj->set('link', $link);
-  	$obj->set('weight', 255);
   	$obj->set('target', $target);
   	$obj->set('groups', $groups);
   }
