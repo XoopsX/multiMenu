@@ -1,6 +1,6 @@
 <?php
 $modversion['name'] = _IM_MULTIMENU_MODULE;
-$modversion['version'] = 1.20 ;
+$modversion['version'] = 1.21 ;
 $modversion['description'] = _IM_MULTIMENU_DESC;
 $modversion['credits'] = "Original :Solo<br /><a href='http://www.wolfpackclan.com'>Wolf Pack Clan</a><br />luinithil<br /><a href='http://www.luinithil.com'>luinithil</a>";
 $modversion['author'] = "Tom<br /><a href='http://malaika.s31.xrea.com/'>Malaika System</a>";
