@@ -162,9 +162,11 @@ class getMultiMenu {
 					$imenu['link'] = $myrow['link'];
 			}
 			if ($imenu['link']) {
-				if (substr($imenu['link'], -1) === '/') {
-					$imenu['link'] .= 'index.php';
-				}
+				// #7 (https://github.com/XoopsX/multiMenu/issues/7)
+				// It's needless code, May be.
+				//if (substr($imenu['link'], -1) === '/') {
+				//	$imenu['link'] .= 'index.php';
+				//}
 				if ($mid) {
 					$imenu['mid'] = $mid;
 				}
