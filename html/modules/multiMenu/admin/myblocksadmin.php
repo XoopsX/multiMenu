@@ -11,19 +11,21 @@ include_once( XOOPS_ROOT_PATH.'/class/xoopsblock.php' ) ;
 
 
 $xoops_system_url = XOOPS_URL . '/modules/system' ;
-$xoops_system_path = XOOPS_ROOT_PATH . '/modules/system' ;
 
-// language files
-$language = $xoopsConfig['language'] ;
-if( ! file_exists( "$xoops_system_path/language/$language/admin/blocksadmin.php") ) $language = 'english' ;
+if( !defined( 'XOOPS_CUBE_LEGACY' ) ) {
+	$xoops_system_path = XOOPS_ROOT_PATH . '/modules/system' ;
 
-include_once( "$xoops_system_path/language/$language/admin.php" ) ;
-include_once( "$xoops_system_path/language/$language/admin/blocksadmin.php" ) ;
-$group_defs = file( "$xoops_system_path/language/$language/admin/groups.php" ) ;
-foreach( $group_defs as $def ) {
-	if( strstr( $def , '_AM_ACCESSRIGHTS' ) || strstr( $def , '_AM_ACTIVERIGHTS' ) ) eval( $def ) ;
+	// language files
+	$language = $xoopsConfig['language'] ;
+	if( ! file_exists( "$xoops_system_path/language/$language/admin/blocksadmin.php") ) $language = 'english' ;
+	
+	include_once( "$xoops_system_path/language/$language/admin.php" ) ;
+	include_once( "$xoops_system_path/language/$language/admin/blocksadmin.php" ) ;
+	$group_defs = file( "$xoops_system_path/language/$language/admin/groups.php" ) ;
+	foreach( $group_defs as $def ) {
+		if( strstr( $def , '_AM_ACCESSRIGHTS' ) || strstr( $def , '_AM_ACTIVERIGHTS' ) ) eval( $def ) ;
+	}
 }
-
 
 // check $xoopsModule
 if( ! is_object( $xoopsModule ) ) redirect_header( XOOPS_URL.'/user.php' , 1 , _NOPERM ) ;
