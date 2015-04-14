@@ -26,7 +26,7 @@ class getMultiMenu {
   
   function getblock( $options, $db_name  ) {
 
-	$myts =& MyTextSanitizer::getInstance();
+  	(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance();
 	$block = array();
 	$inum = 0;
 	$group = is_object($this->user) ? $this->user->getGroups() : array(XOOPS_GROUP_ANONYMOUS);
