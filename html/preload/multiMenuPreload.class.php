@@ -46,7 +46,7 @@ class multimenuFlow  {
 	var $nextLink = null;
 	var $flowLink = null;
 	var $pathMatch = false;
-	function multiMenuFlow($gmm){
+	function __construct($gmm){
 		global $xoopsUser,$xoopsDB;
 		if ($xoopsUser){
             $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')? 'https': 'http';
