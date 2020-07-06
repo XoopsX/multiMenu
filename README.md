@@ -1,9 +1,10 @@
-## Module multiMenu Module
+## Module multiMenu v.2.3
 
+Refactor code to XCL - PHP7 and MySQL ENGINE=InnoDB 
 
 ### Description
 
-multiManager module allows you to display customized menus.
+multiMenu module allows you to display customized menus.
 
 
 ### Setting matching methods
