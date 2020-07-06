@@ -1,13 +1,13 @@
 <?php
 define("_AD_MULTIMENU_ADMIN", 	"Administration : multiMenu");
-define("_AD_MULTIMENU_ADMIN_01", 	"Administration : multiMenu01");
-define("_AD_MULTIMENU_ADMIN_02", 	"Administration : multiMenu02");
-define("_AD_MULTIMENU_ADMIN_03", 	"Administration : multiMenu03");
-define("_AD_MULTIMENU_ADMIN_04", 	"Administration : multiMenu04");
-define("_AD_MULTIMENU_ADMIN_05", 	"Administration : multiMenu05");
-define("_AD_MULTIMENU_ADMIN_06", 	"Administration : multiMenu06");
-define("_AD_MULTIMENU_ADMIN_07", 	"Administration : multiMenu07");
-define("_AD_MULTIMENU_ADMIN_08", 	"Administration : multiMenu08");
+define("_AD_MULTIMENU_ADMIN_01", 	"multiMenu01");
+define("_AD_MULTIMENU_ADMIN_02", 	"multiMenu02");
+define("_AD_MULTIMENU_ADMIN_03", 	"multiMenu03");
+define("_AD_MULTIMENU_ADMIN_04", 	"multiMenu04");
+define("_AD_MULTIMENU_ADMIN_05", 	"multiMenu05");
+define("_AD_MULTIMENU_ADMIN_06", 	"multiMenu06");
+define("_AD_MULTIMENU_ADMIN_07", 	"multiMenu07");
+define("_AD_MULTIMENU_ADMIN_08", 	"multiMenu08");
 define("_AD_MULTIMENU_EDITIMENU", 	"Editer");
 define("_AD_MULTIMENU_NEWIMENU", 	"Nouveau Lien");
 define("_AD_MULTIMENU_NEW",		"Nouveau Lien");
@@ -23,8 +23,7 @@ define("_AD_MULTIMENU_TARG_SELF",	"self");
 define("_AD_MULTIMENU_TARG_BLANK",	"blank");
 define("_AD_MULTIMENU_TARG_PARENT",	"parent");
 define("_AD_MULTIMENU_TARG_TOP",	"top");
-define("_AD_MULTIMENU_SUREDELETE",	"Etes-vous certain de vouloir supprimer ce lien ?");
-define("_AD_MULTIMENU_UPDATED",	"Base de donn? mise ?Jour !");
-define("_AD_MULTIMENU_NOTUPDATED",	"Impossible de mettre la Base de donn??jour !");
+define("_AD_MULTIMENU_SUREDELETE",	"Etes-vous certain de vouloir supprimer ce lien?");
+define("_AD_MULTIMENU_UPDATED",	"Base de données mise à Jour !");
+define("_AD_MULTIMENU_NOTUPDATED",	"Impossible de mettre la Base de données à jour!");
 define("_AD_MULTIMENU_SUBMIT", 	"Proposer");
-?>

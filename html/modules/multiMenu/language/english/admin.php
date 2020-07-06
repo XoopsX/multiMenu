@@ -1,13 +1,13 @@
 <?php
 define("_AD_MULTIMENU_ADMIN", 	"Administration : multiMenu");
-define("_AD_MULTIMENU_ADMIN_01", 	"Administration : multiMenu01");
-define("_AD_MULTIMENU_ADMIN_02", 	"Administration : multiMenu02");
-define("_AD_MULTIMENU_ADMIN_03", 	"Administration : multiMenu03");
-define("_AD_MULTIMENU_ADMIN_04", 	"Administration : multiMenu04");
-define("_AD_MULTIMENU_ADMIN_05", 	"Administration : multiMenu05");
-define("_AD_MULTIMENU_ADMIN_06", 	"Administration : multiMenu06");
-define("_AD_MULTIMENU_ADMIN_07", 	"Administration : multiMenu07");
-define("_AD_MULTIMENU_ADMIN_08", 	"Administration : multiMenu08");
+define("_AD_MULTIMENU_ADMIN_01", 	"multiMenu01");
+define("_AD_MULTIMENU_ADMIN_02", 	"multiMenu02");
+define("_AD_MULTIMENU_ADMIN_03", 	"multiMenu03");
+define("_AD_MULTIMENU_ADMIN_04", 	"multiMenu04");
+define("_AD_MULTIMENU_ADMIN_05", 	"multiMenu05");
+define("_AD_MULTIMENU_ADMIN_06", 	"multiMenu06");
+define("_AD_MULTIMENU_ADMIN_07", 	"multiMenu07");
+define("_AD_MULTIMENU_ADMIN_08", 	"multiMenu08");
 define('_AD_MULTIMENU_ADMIN_99', 	'Administration : Flow');
 
 define("_AD_MULTIMENU_EDITIMENU", 	"Edit");
@@ -112,4 +112,4 @@ if ( !defined('_AM_ACTIVERIGHTS') ) {
   define("_AM_ACTIVERIGHTS","Module Admin rights");
   define("_AM_ACCESSRIGHTS","Module Access rights");
 }
-?>
+

@@ -37,10 +37,10 @@ require_once XOOPS_ROOT_PATH.'/class/xoopsform/form.php';
 
 /**
  * Renders a form for setting module specific group permissions
- * 
+ *
  * @author	Kazumi Ono	<onokazu@myweb.ne.jp>
  * @copyright	copyright (c) 2000-2003 XOOPS.org
- * 
+ *
  * @package     kernel
  * @subpackage  form
  */
@@ -51,32 +51,32 @@ class MyXoopsGroupPermForm extends XoopsForm
 	 * Module ID
 	 * @var int
 	 */
-	var $_modid;
+	public $_modid;
 	/**
 	 * Tree structure of items
 	 * @var array
 	 */
-	var $_itemTree;
+	public $_itemTree;
 	/**
 	 * Name of permission
 	 * @var string
 	 */
-	var $_permName;
+	public $_permName;
 	/**
 	 * Description of permission
 	 * @var string
 	 */
-	var $_permDesc;
+	public $_permDesc;
 	/**
 	 * Appendix
 	 * @var array ('permname'=>,'itemid'=>,'itemname'=>,'selected'=>)
 	 */
-	var $_appendix = array() ;
+	public $_appendix = array() ;
 
 	/**
 	 * Constructor
 	 */
-	function MyXoopsGroupPermForm($title, $modid, $permname, $permdesc)
+	public function __construct($title, $modid, $permname, $permdesc)
 	{
 //		$this->XoopsForm($title, 'groupperm_form', XOOPS_URL.'/modules/system/admin/groupperm.php', 'post'); GIJ
 		$this->XoopsForm($title, 'groupperm_form', '' , 'post');
@@ -94,7 +94,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 	 * @param int $itemParent
 	 * @access public
 	 */
-	function addItem($itemId, $itemName, $itemParent = 0)
+	public function addItem($itemId, $itemName, $itemParent = 0)
 	{
 		$this->_itemTree[$itemParent]['children'][] = $itemId;
 		$this->_itemTree[$itemId]['parent'] = $itemParent;
@@ -107,7 +107,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 	 *
 	 * @access public
 	 */
-	function addAppendix($permName,$itemId,$itemName)
+	public function addAppendix($permName,$itemId,$itemName)
 	{
 		$this->_appendix[] = array('permname'=>$permName,'itemid'=>$itemId,'itemname'=>$itemName,'selected'=>false);
 	}
@@ -119,15 +119,15 @@ class MyXoopsGroupPermForm extends XoopsForm
 	 * @param array $childIds
 	 * @access private
 	 */
-	function _loadAllChildItemIds($itemId, &$childIds)
+	public function _loadAllChildItemIds($itemId, &$childIds)
 	{
 		if (!empty($this->_itemTree[$itemId]['children'])) {
 			$first_child = $this->_itemTree[$itemId]['children'];
 			foreach ($first_child as $fcid) {
-				array_push($childIds, $fcid);
+				$childIds[] = $fcid;
 				if (!empty($this->_itemTree[$fcid]['children'])) {
 					foreach ($this->_itemTree[$fcid]['children'] as $_fcid) {
-						array_push($childIds, $_fcid);
+						$childIds[] = $_fcid;
 						$this->_loadAllChildItemIds($_fcid, $childIds);
 					}
 				}
@@ -141,7 +141,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 	 * @return string
 	 * @access public
 	 */
-	function render()
+	public function render()
 	{
 		// load all child ids for javascript codes
 		foreach (array_keys($this->_itemTree) as $item_id) {
@@ -189,7 +189,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 				$ret .= $elements[$i];
 			} elseif (!$elements[$i]->isHidden()) {
 				$ret .= "<tr valign='top' align='left'><td class='head'>".$elements[$i]->getCaption();
-				if ($elements[$i]->getDescription() != '') {
+				if ($elements[$i]->getDescription() !== '') {
 					$ret .= '<br /><br /><span style="font-weight: normal;">'.$elements[$i]->getDescription().'</span>';
 				}
 				$ret .= "</td>\n<td class='even'>\n".$elements[$i]->render()."\n</td></tr>\n";
@@ -204,10 +204,10 @@ class MyXoopsGroupPermForm extends XoopsForm
 
 /**
  * Renders checkbox options for a group permission form
- * 
+ *
  * @author	Kazumi Ono	<onokazu@myweb.ne.jp>
  * @copyright	copyright (c) 2000-2003 XOOPS.org
- * 
+ *
  * @package     kernel
  * @subpackage  form
  */
@@ -218,27 +218,27 @@ class MyXoopsGroupFormCheckBox extends XoopsFormElement
 	 * Pre-selected value(s)
 	 * @var array;
 	 */
-	var $_value;
+	public $_value;
 	/**
 	 * Group ID
 	 * @var int
 	 */
-	var $_groupId;
+	public $_groupId;
 	/**
 	 * Option tree
 	 * @var array
 	 */
-	var $_optionTree;
+	public $_optionTree;
 	/**
 	 * Appendix
 	 * @var array ('permname'=>,'itemid'=>,'itemname'=>,'selected'=>)
 	 */
-	var $_appendix = array() ;
+	public $_appendix = array() ;
 
 	/**
 	 * Constructor
 	 */
-	function MyXoopsGroupFormCheckBox($caption, $name, $groupId, $values = null)
+	public function __construct($caption, $name, $groupId, $values = null)
 	{
 		$this->setCaption($caption);
 		$this->setName($name);
@@ -292,7 +292,7 @@ class MyXoopsGroupFormCheckBox extends XoopsFormElement
 	 * @return string
 	 * @access public
 	 */
-	function render()
+	public function render()
 	{
 		$ret = '' ;
 
@@ -340,7 +340,7 @@ class MyXoopsGroupFormCheckBox extends XoopsFormElement
 	 * @param array $parentIds
 	 * @access private
 	 */
-	function _renderOptionTree(&$tree, $option, $prefix, $parentIds = array())
+	public function _renderOptionTree(&$tree, $option, $prefix, $parentIds = array())
 	{
 		$tree .= $prefix."<input type=\"checkbox\" name=\"".$this->getName()."[groups][".$this->_groupId."][".$option['id']."]\" id=\"".$this->getName()."[groups][".$this->_groupId."][".$option['id']."]\" onclick=\"";
 		// If there are parent elements, add javascript that will
@@ -359,7 +359,7 @@ class MyXoopsGroupFormCheckBox extends XoopsFormElement
 			$tree .= "var ele = xoopsGetElementById('".$child_ele."'); if(this.checked != true) {ele.checked = false;}";
 		}
 		$tree .= '" value="1"';
-		if ( isset( $this->_value ) && in_array($option['id'], $this->_value)) {
+		if ( isset( $this->_value ) && in_array($option['id'], $this->_value, true)) {
 			$tree .= ' checked="checked"';
 		}
 		$tree .= " />".$option['name']."<input type=\"hidden\" name=\"".$this->getName()."[parents][".$option['id']."]\" value=\"".implode(':', $parentIds)."\" /><input type=\"hidden\" name=\"".$this->getName()."[itemname][".$option['id']."]\" value=\"".htmlspecialchars($option['name'])."\" /><br />\n";

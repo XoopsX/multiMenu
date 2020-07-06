@@ -1,5 +1,8 @@
 <?php
-if (!defined('XOOPS_ROOT_PATH')) exit();
+
+if (!defined('XOOPS_ROOT_PATH')) {
+    exit();
+}
 
 $root = XCube_Root::getSingleton();
 $op = $root->mContext->mRequest->getRequest('op') ;
@@ -27,4 +30,3 @@ switch($op) {
     $class->im_admin_list();
     break;
 }
-?>

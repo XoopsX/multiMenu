@@ -3,12 +3,12 @@ $modversion['name'] = _IM_MULTIMENU_MODULE;
 $modversion['version'] = 1.24 ;
 $modversion['detailed_version'] = '1.24.1' ;
 $modversion['description'] = _IM_MULTIMENU_DESC;
-$modversion['credits'] = "Original :Solo<br /><a href='http://www.wolfpackclan.com'>Wolf Pack Clan</a><br />luinithil<br /><a href='http://www.luinithil.com'>luinithil</a>";
-$modversion['author'] = "Tom<br /><a href='http://malaika.s31.xrea.com/'>Malaika System</a>";
+$modversion['author'] = "Tom, Malaika System";
+$modversion['credits'] = "Original module by Solo, luinithil, Wolf and XCL version by XOOPSCube Team";
 $modversion['help'] = "help.html";
 $modversion['license'] = "GPL see LICENSE";
 $modversion['official'] = 0;
-$modversion['image'] = "images/slogo.png";
+$modversion['image'] = "images/module_multimenu.svg";
 $modversion['dirname'] = "multiMenu";
 
 $modversion['cube_style'] = true;
@@ -144,4 +144,4 @@ $modversion['config'][] = array(
 
 $modversion['onUpdate'] = 'include/onupdate.inc.php' ;
 
-?>
+

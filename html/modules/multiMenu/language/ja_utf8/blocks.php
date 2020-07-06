@@ -9,4 +9,3 @@ define("_BM_MULTIMENU_TITLE_6","マルチメニュー 7");
 define("_BM_MULTIMENU_TITLE_7","マルチメニュー 8");
 define("_BM_MULTIMENU_CHARS","タイトルの文字数");
 define("_BM_MULTIMENU_LENGTH"," 文字");
-?>

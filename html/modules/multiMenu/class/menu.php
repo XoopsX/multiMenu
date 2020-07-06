@@ -1,5 +1,8 @@
 <?php
-if (!defined('XOOPS_ROOT_PATH')) exit();
+
+if (!defined('XOOPS_ROOT_PATH')) {
+    exit();
+}
 
 class MultimenuMenuObject extends XoopsSimpleObject
 {
@@ -23,14 +26,14 @@ class MultimenuMenuHandler extends XoopsObjectGenericHandler
 
   public function __construct(&$db)
   {
-    parent::XoopsObjectGenericHandler($db);
+    parent::__construct($db);
   }
-  
+
   public function setTable($mnum)
   {
     $this->mTable = $this->db->prefix('multimenu'.$mnum);
   }
-  
+
   public function im_admin_clean()
   {
     $i = 0;
@@ -42,4 +45,4 @@ class MultimenuMenuHandler extends XoopsObjectGenericHandler
     }
   }
 }
-?>
+

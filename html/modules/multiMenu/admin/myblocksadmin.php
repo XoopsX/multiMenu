@@ -17,21 +17,28 @@ if( !defined( 'XOOPS_CUBE_LEGACY' ) ) {
 
 	// language files
 	$language = $xoopsConfig['language'] ;
-	if( ! file_exists( "$xoops_system_path/language/$language/admin/blocksadmin.php") ) $language = 'english' ;
-	
+	if( ! file_exists( "$xoops_system_path/language/$language/admin/blocksadmin.php") ) {
+        $language = 'english';
+    }
+
 	include_once( "$xoops_system_path/language/$language/admin.php" ) ;
 	include_once( "$xoops_system_path/language/$language/admin/blocksadmin.php" ) ;
 	$group_defs = file( "$xoops_system_path/language/$language/admin/groups.php" ) ;
 	foreach( $group_defs as $def ) {
-		if( strstr( $def , '_AM_ACCESSRIGHTS' ) || strstr( $def , '_AM_ACTIVERIGHTS' ) ) eval( $def ) ;
+		if( strpos($def, '_AM_ACCESSRIGHTS') !== false || strpos($def, '_AM_ACTIVERIGHTS') !== false) {
+            eval($def);
+        }
 	}
 }
 
 // check $xoopsModule
-if( ! is_object( $xoopsModule ) ) redirect_header( XOOPS_URL.'/user.php' , 1 , _NOPERM ) ;
+if( ! is_object( $xoopsModule ) ) {
+    redirect_header(XOOPS_URL . '/user.php', 1, _NOPERM);
+}
 
 // get blocks owned by the module
-$block_arr =& XoopsBlock::getByModule( $xoopsModule->mid() ) ;
+// $block_arr =& XoopsBlock::getByModule( $xoopsModule->mid() ) ; @gigamaster make call dynamic
+$block_arr =& (new XoopsBlock)->getByModule( $xoopsModule->mid() ) ;
 
 // add by Tom
 sort ($block_arr);
@@ -47,7 +54,14 @@ function list_blocks()
 	// displaying TH
 	echo "
 	<table width='100%' class='outer' cellpadding='4' cellspacing='1'>
-	<tr valign='middle'><th width='20%'>"._AM_BLKDESC."</th><th>"._AM_TITLE."</th><th align='center' nowrap='nowrap'>"._AM_SIDE."</th><th align='center'>"._AM_WEIGHT."</th><th align='center'>"._AM_VISIBLE."</th><th align='right'>"._AM_ACTION."</th></tr>
+	<tr valign='middle'>
+	<th width='20%'>"._AM_BLKDESC."</th>
+	<th>"._AM_TITLE."</th>
+	<th align='center' nowrap='nowrap'>"._AM_SIDE."</th>
+	<th align='center'>"._AM_WEIGHT."</th>
+	<th align='center'>"._AM_VISIBLE."</th>
+	<th align='right'>"._AM_ACTION."</th>
+	</tr>
 	";
 
 	// blocks displaying loop
@@ -63,7 +77,9 @@ function list_blocks()
 		$weight = $block_arr[$i]->getVar("weight") ;
 		$side_desc = $side_descs[ $block_arr[$i]->getVar("side") ] ;
 		$title = $block_arr[$i]->getVar("title") ;
-		if( $title == '' ) $title = "&nbsp;" ;
+		if( $title == '' ) {
+            $title = "&nbsp;";
+        }
 		$name = $block_arr[$i]->getVar("name") ;
 		$bid = $block_arr[$i]->getVar("bid") ;
 
@@ -81,7 +97,7 @@ function list_blocks()
 		}
 		echo "</td>
 		</tr>\n" ;
-		
+
 		$class = ( $class == 'even' ) ? 'odd' : 'even' ;
 	}
 	echo "<tr><td class='foot' align='center' colspan='7'>
@@ -116,18 +132,16 @@ if( ! empty( $_POST['submit'] ) ) {
 
 xoops_cp_header() ;
 
-// for multimenu admin menu
-//echo "<h3 style='text-align:left;'>".$xoopsModule->name()."</h3>\n" ;
+
 require 'admin_function.php';
 $class = new multimenu($menu_num);
 
 $class->mm_admin_menu(0, _AM_BADMIN );
 
-//echo "<h4 style='text-align:left;'>"._AM_BADMIN."</h4>\n" ;
 list_blocks() ;
 if( !defined( 'XOOPS_CUBE_LEGACY' ) ) {
 	list_groups() ;
 }
 xoops_cp_footer() ;
 
-?>
+

@@ -7,7 +7,7 @@ CREATE TABLE {prefix}_multimenu01 (
   target varchar(10) default NULL,
   groups varchar(255) default NULL,
   PRIMARY KEY (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 
 CREATE TABLE {prefix}_multimenu02 (
@@ -19,7 +19,7 @@ CREATE TABLE {prefix}_multimenu02 (
   target varchar(10) default NULL,
   groups varchar(255) default NULL,
   PRIMARY KEY (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 
 CREATE TABLE {prefix}_multimenu03 (
@@ -31,7 +31,7 @@ CREATE TABLE {prefix}_multimenu03 (
   target varchar(10) default NULL,
   groups varchar(255) default NULL,
   PRIMARY KEY (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 
 CREATE TABLE {prefix}_multimenu04 (
@@ -43,7 +43,7 @@ CREATE TABLE {prefix}_multimenu04 (
   target varchar(10) default NULL,
   groups varchar(255) default NULL,
   PRIMARY KEY (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE {prefix}_multimenu05 (
   id int(5) unsigned NOT NULL auto_increment,
@@ -54,7 +54,7 @@ CREATE TABLE {prefix}_multimenu05 (
   target varchar(10) default NULL,
   groups varchar(255) default NULL,
   PRIMARY KEY (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 
 CREATE TABLE {prefix}_multimenu06 (
@@ -66,7 +66,7 @@ CREATE TABLE {prefix}_multimenu06 (
   target varchar(10) default NULL,
   groups varchar(255) default NULL,
   PRIMARY KEY (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE {prefix}_multimenu07 (
   id int(5) unsigned NOT NULL auto_increment,
@@ -77,7 +77,7 @@ CREATE TABLE {prefix}_multimenu07 (
   target varchar(10) default NULL,
   groups varchar(255) default NULL,
   PRIMARY KEY (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 
 CREATE TABLE {prefix}_multimenu08 (
@@ -89,7 +89,7 @@ CREATE TABLE {prefix}_multimenu08 (
   target varchar(10) default NULL,
   groups varchar(255) default NULL,
   PRIMARY KEY (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 
 CREATE TABLE {prefix}_multimenu99 (
@@ -103,11 +103,11 @@ CREATE TABLE {prefix}_multimenu99 (
   target varchar(10) default NULL,
   groups varchar(255) default NULL,
   PRIMARY KEY (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 
 CREATE TABLE {prefix}_multimenu_log (
   uid mediumint(8) NOT NULL default '0',
   id int(5) unsigned NOT NULL default '0',
   PRIMARY KEY (uid)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
