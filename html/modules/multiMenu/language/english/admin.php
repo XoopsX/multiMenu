@@ -9,7 +9,6 @@ define("_AD_MULTIMENU_ADMIN_06", 	"multiMenu06");
 define("_AD_MULTIMENU_ADMIN_07", 	"multiMenu07");
 define("_AD_MULTIMENU_ADMIN_08", 	"multiMenu08");
 define('_AD_MULTIMENU_ADMIN_99', 	'Administration : Flow');
-
 define("_AD_MULTIMENU_EDITIMENU", 	"Edit");
 define("_AD_MULTIMENU_NEWIMENU", 	"New Link");
 define("_AD_MULTIMENU_NEW",		"New Link");
