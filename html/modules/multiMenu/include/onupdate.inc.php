@@ -1,6 +1,18 @@
 <?php
-if (!defined('XOOPS_ROOT_PATH')) exit();
-$mydirname = basename(dirname(dirname(__FILE__)));
+/**
+ * @package    Multimenu
+ * @version    2.3.1
+ * @author     Gigamaster, 2020 XCL PHP7
+ * @author     Tom Hayakawa
+ * @copyright  Copyright 2005-2021 XOOPSCube Project
+ * @license    https://github.com/xoopscube/xcl/blob/master/docs/GPL_V2.txt
+ */
+
+
+if (!defined('XOOPS_ROOT_PATH')) {
+	exit();
+}
+$mydirname = basename( dirname( __FILE__, 2 ) );
 
 eval( ' function xoops_module_update_'.$mydirname.'( $module, $prev_version) { return multiMenu_onupdate_base( $module, $prev_version , "'.$mydirname.'" ) ; } ' ) ;
 
@@ -10,18 +22,14 @@ function multiMenu_onupdate_base( $module, $prev_version , $mydirname )
 	global $msgs ;
 
 	// for Cube 2.1
-	if( defined( 'XOOPS_CUBE_LEGACY' ) ) {
-		$isCube = true ;
-		$root =& XCube_Root::getSingleton();
-		$root->mDelegateManager->add( 'Legacy.Admin.Event.ModuleUpdate.' . ucfirst($mydirname) . '.Success', 'multiMenu_message_append_onupdate' ) ;
-		$msgs = array() ;
-	} else {
-		$isCube = false ;
-		if( ! is_array( $msgs ) ) $msgs = array() ;
+	if ( defined( 'XOOPS_CUBE_LEGACY' ) ) {
+		$isCube = true;
+		$root   =& XCube_Root::getSingleton();
+		$root->mDelegateManager->add( 'Legacy.Admin.Event.ModuleUpdate.' . ucfirst( $mydirname ) . '.Success', 'multiMenu_message_append_onupdate' );
+		$msgs = array();
 	}
 
 	$db =& Database::getInstance() ;
-//	$mid = $module->getVar('mid') ;
 
 //version 1.13 -> version 1.14
 	$addTables = array('multimenu05','multimenu06','multimenu07','multimenu08');
@@ -31,14 +39,14 @@ function multiMenu_onupdate_base( $module, $prev_version , $mydirname )
 		if( empty($result) ){
 			$sql ="CREATE TABLE ".$db->prefix($table_name)." (
 			  id int(5) unsigned NOT NULL auto_increment,
-			  title varchar(2048) NOT NULL default '',
+			  title varchar(191) NOT NULL default '',
 			  hide tinyint(1) unsigned NOT NULL default '0',
-			  link varchar(255) default NULL,
+			  link varchar(191) default NULL,
 			  weight tinyint(4) unsigned NOT NULL default '0',
 			  target varchar(10) default NULL,
-			  groups varchar(255) default NULL,
+			  groups varchar(191) default NULL,
 			  PRIMARY KEY (id)
-			) ENGINE=MyISAM;
+			) ENGINE = InnoDB;
 			";
 			if( $db->query($sql) ){
 				$msgs[] = '&nbsp;&nbsp;Table <b>'.htmlspecialchars($db->prefix($table_name),ENT_QUOTES).'</b> created.';
@@ -56,14 +64,14 @@ function multiMenu_onupdate_base( $module, $prev_version , $mydirname )
 		  id int(5) unsigned NOT NULL auto_increment,
 		  block_id int(5) unsigned NOT NULL default '0',
 		  parent_id int(5) unsigned NOT NULL default '0',
-		  title varchar(2048) NOT NULL default '',
+		  title varchar(191) NOT NULL default '',
 		  hide tinyint(1) unsigned NOT NULL default '0',
-		  link varchar(255) default NULL,
+		  link varchar(191) default NULL,
 		  weight tinyint(4) unsigned NOT NULL default '0',
 		  target varchar(10) default NULL,
-		  groups varchar(255) default NULL,
+		  groups varchar(191) default NULL,
 		  PRIMARY KEY (id)
-		) ENGINE=MyISAM;
+		) ENGINE = InnoDB;
 		";
 		if( $db->query($sql) ){
 			$msgs[] = '&nbsp;&nbsp;Table <b>'.htmlspecialchars($db->prefix("multimenu99"),ENT_QUOTES).'</b> created.';
@@ -79,7 +87,7 @@ function multiMenu_onupdate_base( $module, $prev_version , $mydirname )
 		  uid mediumint(8) NOT NULL default '0',
 		  id int(5) unsigned NOT NULL default '0',
 		  PRIMARY KEY (uid)
-		) ENGINE=MyISAM;
+		) ENGINE = InnoDB;
 		";
 		if( $db->query($sql) ){
 			$msgs[] = '&nbsp;&nbsp;Table <b>'.htmlspecialchars($db->prefix("multimenu99"),ENT_QUOTES).'</b> created.';
@@ -101,5 +109,3 @@ function multiMenu_message_append_onupdate( &$module_obj , &$log )
 	}
 	// use mLog->addWarning() or mLog->addError() if necessary
 }
-
-?>

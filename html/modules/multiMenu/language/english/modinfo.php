@@ -10,5 +10,4 @@ define("_IM_MULTIMENU_NAME_6",	"multiMenu 7");
 define("_IM_MULTIMENU_NAME_7",	"multiMenu 8");
 define("_IM_MULTIMENU_FLOW",	"Flow Menu");
 define("_IM_MULTIMENU_NAME_BL",	"block admin");
-define("_IM_MULTIMENU_DESC",	"Allow to create different Custom Menus.");
-
+define("_IM_MULTIMENU_DESC",	"Create and manage different Custom Menus.");
