@@ -9,4 +9,3 @@ define("_BM_MULTIMENU_TITLE_6","multiMenu 7");
 define("_BM_MULTIMENU_TITLE_7","multiMenu 8");
 define("_BM_MULTIMENU_CHARS","Length of the title");
 define("_BM_MULTIMENU_LENGTH",	" characters");
-?>

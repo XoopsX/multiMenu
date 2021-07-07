@@ -27,4 +27,4 @@ define("_AD_MULTIMENU_SUREDELETE",	"Bist du sicher, dass du diesen Eintrag l?che
 define("_AD_MULTIMENU_UPDATED",	"Die Datenbank wurde erfolgreich aktualisiert!");
 define("_AD_MULTIMENU_NOTUPDATED",	"Die Datenbank konnte leider nicht aktualisiert werden.");
 define("_AD_MULTIMENU_SUBMIT", 	"Abschicken");
-?>
+

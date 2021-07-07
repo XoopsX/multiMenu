@@ -11,4 +11,3 @@ define("_IM_MULTIMENU_NAME_7",	"マルチメニュー 8");
 define("_IM_MULTIMENU_FLOW",	"フローメニュー");
 define("_IM_MULTIMENU_NAME_BL",	"ブロック管理");
 define("_IM_MULTIMENU_DESC",	"8つの異なるメニューとフローを作る事ができます");
-?>

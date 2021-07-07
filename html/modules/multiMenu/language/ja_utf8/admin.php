@@ -112,4 +112,3 @@ if ( !defined('_AM_ACTIVERIGHTS') ) {
   define('_AM_ACTIVERIGHTS','モジュール管理者権限');
   define('_AM_ACCESSRIGHTS','モジュールアクセス権限');
 }
-?>
