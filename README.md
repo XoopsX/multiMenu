@@ -1,11 +1,43 @@
-## Module multiMenu v.2.3
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/2.0.0/active.svg)](https://github.com/xoopscube/xcl)
+![License GPL](https://img.shields.io/badge/License-GPL-green)
+![X-Updare Store](https://img.shields.io/badge/X--Update%20Store-Pending-red)
+
+## ///// — MultiMenu :: Custom Navigation Blocks
+
+![alt text](https://repository-images.githubusercontent.com/461634439/038a5641-d653-4d78-ba55-898667ae7d)
+
+
+MODULE | MultiMenu
+------------ | -------------
+Description  | MultiMenu module allows you to display customized menus.
+Render Engine| Smarty v2 and XCube Layout
+Version      | 2.3.1
+Author       | Tom Hayakawa
+Author       | Update by @gigamaster Nuno Luciano (XCL7)
+Copyright    | 2005-2022 Authors
+License      | GPL
+
+
+##### :computer: The Minimum Requirements
+
+
+
+          Apache, Nginx, etc. PHP 7.2.x
+          MySQL 5.6, MariaDB  InnoDB utf8 / utf8mb4
+          XCL version 2.3.+
+
+
+
+-----
+
+## Module MultiMenu v.2.3.+
 
 Refactor code to XCL - PHP7 and MySQL ENGINE=InnoDB 
 
 ### Description
 
-multiMenu module allows you to display customized menus.
-
+multiMenu module allows you to display customized menus.  
+Original module by Solo, luinithil, Wolf and contributions by Domifara, Naoki Sawada, Naoki Okino, Nobunobu, Yoshi Sakai, Toshihiro Takehara (aka nouphet).
 
 ### Setting matching methods
 
